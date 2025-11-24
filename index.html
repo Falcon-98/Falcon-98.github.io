@@ -3,31 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Falcon 98 - Your Trusted Technology Services Provider offering Web Development, Mobile App Development, Cloud Computing, Data Analytics, and IT Consulting">
-    <meta name="keywords" content="technology services, web development, mobile apps, cloud computing, data analytics, IT consulting, Sri Lanka">
+    <meta name="description" content="Falcon 98 - Your Trusted Technology Services Provider offering Web Development, Mobile App Development, Cloud Computing, Data Analytics, and IT Consulting in Sri Lanka">
+    <meta name="keywords" content="technology services, web development, mobile apps, cloud computing, data analytics, IT consulting, Sri Lanka, Falcon 98">
     <meta name="author" content="Falcon 98">
-    <title>Falcon 98 - Technology Services Provider</title>
+    <meta name="theme-color" content="#1e40af">
+    <title>Falcon 98 - Technology Services Provider | Web & Mobile Development</title>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png">
     <link rel="shortcut icon" href="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        /* Accessibility: Respect user's motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
-            to {
+        }
+        
+        /* Screen reader only class and focus styles for accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        .focus\:not-sr-only:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: inherit;
+            margin: inherit;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+        }
+        
+        /* Simple, Professional Keyframe Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            0% { 
+                opacity: 0;
+            }
+            100% { 
+                opacity: 1;
+            }
         }
         
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes shimmer {
+            0% { 
+                background-position: -1000px 0;
+            }
+            100% { 
+                background-position: 1000px 0;
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Professional Animation Classes */
         .fade-in-up {
             animation: fadeInUp 0.6s ease-out forwards;
         }
@@ -36,65 +152,351 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
         
+        .slide-in-left {
+            animation: slideInLeft 0.7s ease-out forwards;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.7s ease-out forwards;
+        }
+        
+        .bounce-in {
+            animation: bounceIn 0.6s ease-out forwards;
+        }
+        
         .scroll-smooth {
             scroll-behavior: smooth;
         }
         
+        /* Professional Service Card */
         .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
         }
         
-        .btn-primary {
+        /* Maroon Gradient for CTA Buttons */
+        .bg-maroon-gradient {
+            background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
+        }
+        
+        .bg-maroon-gradient:hover {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+        }
+        
+        .service-card .icon-wrapper {
             transition: all 0.3s ease;
         }
         
-        .btn-primary:hover {
-            transform: scale(1.05);
+        .service-card:hover .icon-wrapper {
+            transform: scale(1.1);
         }
         
+        /* Professional Button Design */
+        .btn-primary {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        /* Professional Navigation Links */
         .nav-link {
-            transition: color 0.3s ease;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #7f1d1d;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: #7f1d1d;
+        }
+        
+        /* Professional Navigation */
+        nav {
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .gradient-bg {
-            background: linear-gradient(135deg, #1e40af 0%, #991b1b 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #7f1d1d 100%);
         }
         
+        /* Professional Hero Section with Navy Blue and Maroon Theme */
+        /* Perfect Hero Section with Navy Blue Theme and Particles */
         .hero-pattern {
-            background-color: #1f2937;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234b5563' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Particles Container */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        /* Optimized Individual Particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float linear infinite;
+            will-change: transform;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Hero Content Container - Glass effect removed */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 3rem 2rem;
+        }
+        
+        /* Simplified Decorative Element - Removed excessive orb */
+        .hero-pattern::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            top: -300px;
+            right: -200px;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+        }
+        
+        /* Refined Hero Logo */
+        .hero-logo {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2));
+        }
+        
+        .hero-logo:hover {
+            transform: scale(1.08) translateY(-5px);
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* Enhanced Hero Content Typography */
+        .hero-title {
+            animation: fadeInUp 0.8s ease-out forwards;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+        
+        .hero-description {
+            animation: fadeInUp 1.2s ease-out forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+            line-height: 1.8;
+        }
+        
+        .hero-buttons {
+            animation: fadeInUp 1.4s ease-out forwards;
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+        
+        /* Professional Section Titles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #1e40af, #7f1d1d);
+        }
+        
+        /* Professional Scroll-to-Top Button */
+        #scroll-top {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+        }
+        
+        #scroll-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(127, 29, 29, 0.4);
+        }
+        
+        /* Simple Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #1e40af 0%, #7f1d1d 100%);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+        
+        /* Simple Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: rotate 1s linear infinite;
+        }
+        
+        /* Smooth Parallax Elements */
+        .parallax-slow {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .parallax-medium {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .parallax-fast {
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
     </style>
 </head>
 
 <body class="scroll-smooth">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-blue-900 focus:px-4 focus:py-2 focus:rounded">Skip to main content</a>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay" aria-hidden="true">
+        <div class="loader" role="status" aria-label="Loading"></div>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div id="progress-bar" style="width: 0%;" role="progressbar" aria-label="Page scroll progress"></div>
+    
     <!-- Navigation -->
-    <nav class="bg-gray-900 text-white fixed w-full top-0 z-50 shadow-lg">
+    <nav class="bg-gray-900 text-white fixed w-full top-0 z-50 shadow-lg" role="navigation" aria-label="Main navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" alt="Falcon 98 Logo" class="h-10 w-10 mr-3">
-                    <span class="font-bold text-xl">Falcon 98</span>
+                    <span class="font-bold text-xl text-white">Falcon 98</span>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500">Home</a>
-                        <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500">About</a>
-                        <a href="#services" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500">Services</a>
-                        <a href="#contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500">Contact</a>
+                        <a href="#home" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500" aria-label="Navigate to Home section">Home</a>
+                        <a href="#about" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500" aria-label="Navigate to About section">About</a>
+                        <a href="#services" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500" aria-label="Navigate to Services section">Services</a>
+                        <a href="#contact" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500" aria-label="Navigate to Contact section">Contact</a>
                     </div>
                 </div>
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md hover:text-blue-500 focus:outline-none">
+                    <button id="mobile-menu-button" class="text-white inline-flex items-center justify-center p-2 rounded-md hover:text-blue-500 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -104,35 +506,59 @@
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-800">
-                <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Home</a>
-                <a href="#about" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">About</a>
-                <a href="#services" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Services</a>
-                <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Contact</a>
+                <a href="#home" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Home</a>
+                <a href="#about" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">About</a>
+                <a href="#services" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Services</a>
+                <a href="#contact" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-pattern pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-            <div class="text-center fade-in">
-                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" alt="Falcon 98 Logo" class="h-24 w-24 md:h-32 md:w-32 mx-auto mb-8">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                    Welcome to <span class="text-blue-500">Falcon 98</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                    Your Trusted Technology Services Provider
-                </p>
-                <p class="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
-                    Empowering businesses with innovative technology solutions in the digital era
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#services" class="btn-primary inline-block bg-red-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-800">
-                        Our Services
-                    </a>
-                    <a href="#contact" class="btn-primary inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900">
-                        Contact Us
-                    </a>
+    <section id="home" class="hero-pattern" aria-label="Hero section">
+        <main id="main-content"></main>
+        <!-- Animated Particles -->
+        <div class="particles" id="particles" aria-hidden="true"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+            <div class="text-center">
+                <!-- Hero Content Container -->
+                <div class="hero-content max-w-5xl mx-auto">
+                    <!-- Hero Logo with enhanced styling -->
+                    <div class="mb-10">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" 
+                             alt="Falcon 98 Logo" 
+                             class="hero-logo h-28 w-28 md:h-40 md:w-40 mx-auto">
+                    </div>
+                    
+                    <!-- Main Title with improved typography -->
+                    <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6">
+                        Welcome to <span class="bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">Falcon 98</span>
+                    </h1>
+                    
+                    <!-- Subtitle with better spacing -->
+                    <p class="hero-subtitle text-2xl md:text-3xl lg:text-4xl text-blue-100 mb-6 max-w-4xl mx-auto">
+                        Your Trusted Technology Services Provider
+                    </p>
+                    
+                    <!-- Description with improved readability -->
+                    <p class="hero-description text-lg md:text-xl text-blue-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        Empowering businesses with innovative technology solutions in the digital era
+                    </p>
+                    
+                    <!-- CTA Buttons with enhanced styling -->
+                    <div class="hero-buttons flex flex-col sm:flex-row gap-5 justify-center items-center">
+                        <a href="#services" 
+                           class="btn-primary inline-flex items-center justify-center bg-maroon-gradient text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-red-800 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-w-[200px]">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Our Services
+                        </a>
+                        <a href="#contact" 
+                           class="btn-primary inline-flex items-center justify-center bg-white bg-opacity-10 backdrop-blur-sm border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-900 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-w-[200px]">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Contact Us
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,13 +568,13 @@
     <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">About Falcon 98</h2>
+                <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">About Falcon 98</h2>
                 <div class="w-24 h-1 bg-red-700 mx-auto"></div>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center p-6 rounded-lg bg-gray-50 service-card">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-lightbulb text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
@@ -159,7 +585,7 @@
                 </div>
                 
                 <div class="text-center p-6 rounded-lg bg-gray-50 service-card">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-bullseye text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
@@ -170,7 +596,7 @@
                 </div>
                 
                 <div class="text-center p-6 rounded-lg bg-gray-50 service-card">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-users text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Team</h3>
@@ -187,7 +613,7 @@
     <section id="services" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+                <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
                 <div class="w-24 h-1 bg-red-700 mx-auto mb-4"></div>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                     Comprehensive technology solutions tailored to meet your business needs
@@ -197,7 +623,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Web Development -->
                 <div class="service-card bg-white p-8 rounded-lg shadow-md">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-code text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Web Development</h3>
@@ -213,7 +639,7 @@
                 
                 <!-- Mobile App Development -->
                 <div class="service-card bg-white p-8 rounded-lg shadow-md">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-mobile-alt text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Mobile App Development</h3>
@@ -229,7 +655,7 @@
                 
                 <!-- Cloud Computing -->
                 <div class="service-card bg-white p-8 rounded-lg shadow-md">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-cloud text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Cloud Computing</h3>
@@ -245,7 +671,7 @@
                 
                 <!-- Data Analytics -->
                 <div class="service-card bg-white p-8 rounded-lg shadow-md">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-chart-line text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Data Analytics</h3>
@@ -261,7 +687,7 @@
                 
                 <!-- IT Consulting -->
                 <div class="service-card bg-white p-8 rounded-lg shadow-md">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-user-tie text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">IT Consulting</h3>
@@ -277,7 +703,7 @@
                 
                 <!-- Additional Service -->
                 <div class="service-card bg-white p-8 rounded-lg shadow-md">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <div class="icon-wrapper w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-cogs text-3xl text-red-700"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Custom Solutions</h3>
@@ -298,7 +724,7 @@
     <section id="contact" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
                 <div class="w-24 h-1 bg-red-700 mx-auto mb-4"></div>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                     Get in touch with us to discuss how we can help transform your business
@@ -438,20 +864,7 @@
                         Your Trusted Technology Services Provider. Empowering businesses with innovative 
                         technology solutions in the digital era.
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-700 transition">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-700 transition">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-700 transition">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-700 transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
+                    <!-- Social links removed - will be added when accounts are active -->
                 </div>
                 
                 <div>
@@ -486,18 +899,116 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-top" class="fixed bottom-8 right-8 bg-red-700 text-white w-12 h-12 rounded-full shadow-lg hover:bg-red-800 transition hidden">
-        <i class="fas fa-arrow-up"></i>
+    <button id="scroll-top" class="fixed bottom-8 right-8 bg-red-700 text-white w-12 h-12 rounded-full shadow-lg hover:bg-red-800 transition hidden" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
     <!-- JavaScript -->
     <script>
-        // Mobile Menu Toggle
+        // Animation constants
+        const ANIMATION_STAGGER_DELAY = 120; // milliseconds between each card animation
+        const RIPPLE_DURATION = 800; // milliseconds for ripple animation
+        const PARALLAX_SPEED = 0.5; // parallax scroll speed multiplier
+        
+        // Optimized Particle Animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30; // Reduced from 50 for better performance
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size between 2px and 5px (slightly smaller)
+                const size = Math.random() * 3 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random starting position
+                particle.style.left = `${Math.random() * 100}%`;
+                
+                // Random animation duration between 18s and 25s (slightly faster)
+                const duration = Math.random() * 7 + 18;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay to stagger particles
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles on page load
+        createParticles();
+        
+        // Throttling flags for different scroll handlers
+        let progressTicking = false;
+        let navTicking = false;
+        let parallaxTicking = false;
+        
+        // Simple Loading Animation
+        window.addEventListener('load', () => {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                // Trigger scroll animations after load
+                triggerScrollAnimations();
+            }, 500);
+        });
+        
+        // Consolidated Scroll Handler for Performance
+        let lastScrollY = window.pageYOffset;
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.pageYOffset;
+            
+            // Progress Bar
+            if (!progressTicking) {
+                window.requestAnimationFrame(() => {
+                    const progressBar = document.getElementById('progress-bar');
+                    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (currentScrollY / windowHeight) * 100;
+                    progressBar.style.width = scrolled + '%';
+                    progressTicking = false;
+                });
+                progressTicking = true;
+            }
+            
+            // Navbar Effects
+            if (!navTicking) {
+                window.requestAnimationFrame(() => {
+                    const nav = document.querySelector('nav');
+                    if (currentScrollY > 100) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                    navTicking = false;
+                });
+                navTicking = true;
+            }
+            
+            // Scroll-to-Top Button
+            const scrollTopButton = document.getElementById('scroll-top');
+            if (currentScrollY > 300) {
+                scrollTopButton.classList.remove('hidden');
+                scrollTopButton.classList.add('flex', 'items-center', 'justify-center');
+            } else {
+                scrollTopButton.classList.add('hidden');
+                scrollTopButton.classList.remove('flex', 'items-center', 'justify-center');
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+        
+        // Mobile Menu Toggle with Accessibility
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
         mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', !isHidden);
         });
         
         // Close mobile menu when clicking on a link
@@ -508,7 +1019,7 @@
             });
         });
         
-        // Smooth Scroll for Navigation Links
+        // Smooth Scroll for Navigation Links with Easing
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -523,19 +1034,8 @@
             });
         });
         
-        // Scroll to Top Button
+        // Scroll to Top Button Click
         const scrollTopButton = document.getElementById('scroll-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopButton.classList.remove('hidden');
-                scrollTopButton.classList.add('flex', 'items-center', 'justify-center');
-            } else {
-                scrollTopButton.classList.add('hidden');
-                scrollTopButton.classList.remove('flex', 'items-center', 'justify-center');
-            }
-        });
-        
         scrollTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -591,28 +1091,57 @@
         // Update copyright year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Animate elements on scroll
+        // Advanced Intersection Observer for Scroll Animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
         };
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    // Add simple animation delay
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, delay);
+                    
+                    // Unobserve after animation to improve performance
+                    animationObserver.unobserve(entry.target);
                 }
             });
         }, observerOptions);
         
-        // Observe service cards and other elements
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
+        // Function to trigger scroll animations
+        function triggerScrollAnimations() {
+            // Observe service cards with staggered delays
+            document.querySelectorAll('.service-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `all 0.6s ease`;
+                card.dataset.delay = index * ANIMATION_STAGGER_DELAY;
+                animationObserver.observe(card);
+            });
+            
+            // Observe section titles with smooth animation
+            document.querySelectorAll('.section-title').forEach(title => {
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            sectionObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                title.style.opacity = '0';
+                title.style.transform = 'translateY(20px)';
+                title.style.transition = 'all 0.7s ease';
+                sectionObserver.observe(title);
+            });
+        }
     </script>
 </body>
 </html>
