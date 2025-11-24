@@ -243,7 +243,7 @@
         }
         
         /* Professional Hero Section with Navy Blue and Maroon Theme */
-        /* Perfect Hero Section with Navy Blue Theme */
+        /* Perfect Hero Section with Navy Blue Theme and Particles */
         .hero-pattern {
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
             position: relative;
@@ -251,6 +251,56 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+        }
+        
+        /* Particles Container */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        /* Individual Particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Glass Morphic Hero Container */
+        .hero-glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 3rem 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            position: relative;
+            z-index: 2;
         }
         
         /* Subtle Decorative Elements */
@@ -264,6 +314,7 @@
             background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             filter: blur(80px);
+            z-index: 0;
         }
         
         .hero-pattern::after {
@@ -276,6 +327,7 @@
             background: radial-gradient(circle, rgba(127, 29, 29, 0.2) 0%, transparent 70%);
             border-radius: 50%;
             filter: blur(80px);
+            z-index: 0;
         }
         
         /* Refined Hero Logo */
@@ -452,42 +504,48 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-pattern">
+        <!-- Animated Particles -->
+        <div class="particles" id="particles"></div>
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
             <div class="text-center">
-                <!-- Hero Logo with enhanced styling -->
-                <div class="mb-10">
-                    <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" 
-                         alt="Falcon 98 Logo" 
-                         class="hero-logo h-28 w-28 md:h-40 md:w-40 mx-auto">
-                </div>
-                
-                <!-- Main Title with improved typography -->
-                <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6">
-                    Welcome to <span class="bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">Falcon 98</span>
-                </h1>
-                
-                <!-- Subtitle with better spacing -->
-                <p class="hero-subtitle text-2xl md:text-3xl lg:text-4xl text-blue-100 mb-6 max-w-4xl mx-auto">
-                    Your Trusted Technology Services Provider
-                </p>
-                
-                <!-- Description with improved readability -->
-                <p class="hero-description text-lg md:text-xl text-blue-200 mb-12 max-w-3xl mx-auto leading-relaxed">
-                    Empowering businesses with innovative technology solutions in the digital era
-                </p>
-                
-                <!-- CTA Buttons with enhanced styling -->
-                <div class="hero-buttons flex flex-col sm:flex-row gap-5 justify-center items-center">
-                    <a href="#services" 
-                       class="btn-primary inline-flex items-center justify-center bg-maroon-gradient text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-red-800 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-w-[200px]">
-                        <i class="fas fa-rocket mr-2"></i>
-                        Our Services
-                    </a>
-                    <a href="#contact" 
-                       class="btn-primary inline-flex items-center justify-center bg-white bg-opacity-10 backdrop-blur-sm border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-900 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-w-[200px]">
-                        <i class="fas fa-envelope mr-2"></i>
-                        Contact Us
-                    </a>
+                <!-- Glass Morphic Container -->
+                <div class="hero-glass max-w-5xl mx-auto">
+                    <!-- Hero Logo with enhanced styling -->
+                    <div class="mb-10">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" 
+                             alt="Falcon 98 Logo" 
+                             class="hero-logo h-28 w-28 md:h-40 md:w-40 mx-auto">
+                    </div>
+                    
+                    <!-- Main Title with improved typography -->
+                    <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6">
+                        Welcome to <span class="bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">Falcon 98</span>
+                    </h1>
+                    
+                    <!-- Subtitle with better spacing -->
+                    <p class="hero-subtitle text-2xl md:text-3xl lg:text-4xl text-blue-100 mb-6 max-w-4xl mx-auto">
+                        Your Trusted Technology Services Provider
+                    </p>
+                    
+                    <!-- Description with improved readability -->
+                    <p class="hero-description text-lg md:text-xl text-blue-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        Empowering businesses with innovative technology solutions in the digital era
+                    </p>
+                    
+                    <!-- CTA Buttons with enhanced styling -->
+                    <div class="hero-buttons flex flex-col sm:flex-row gap-5 justify-center items-center">
+                        <a href="#services" 
+                           class="btn-primary inline-flex items-center justify-center bg-maroon-gradient text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-red-800 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-w-[200px]">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Our Services
+                        </a>
+                        <a href="#contact" 
+                           class="btn-primary inline-flex items-center justify-center bg-white bg-opacity-10 backdrop-blur-sm border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-900 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-w-[200px]">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Contact Us
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -851,6 +909,38 @@
         const ANIMATION_STAGGER_DELAY = 120; // milliseconds between each card animation
         const RIPPLE_DURATION = 800; // milliseconds for ripple animation
         const PARALLAX_SPEED = 0.5; // parallax scroll speed multiplier
+        
+        // Particle Animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50; // Number of particles
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random starting position
+                particle.style.left = `${Math.random() * 100}%`;
+                
+                // Random animation duration between 15s and 25s
+                const duration = Math.random() * 10 + 15;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay to stagger particles
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles on page load
+        createParticles();
         
         // Throttling flags for different scroll handlers
         let progressTicking = false;
