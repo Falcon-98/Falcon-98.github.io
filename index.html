@@ -182,8 +182,8 @@
         }
         
         .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
+            width: 400%;
+            height: 400%;
         }
         
         .btn-primary:hover {
@@ -218,6 +218,7 @@
         nav.scrolled {
             background-color: rgba(17, 24, 39, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         .gradient-bg {
@@ -893,6 +894,10 @@
         // Update copyright year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
+        // Animation constants
+        const ANIMATION_STAGGER_DELAY = 100; // milliseconds between each card animation
+        const RIPPLE_DURATION = 600; // milliseconds for ripple animation
+        
         // Enhanced Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
@@ -906,7 +911,7 @@
                     setTimeout(() => {
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
+                    }, index * ANIMATION_STAGGER_DELAY);
                 }
             });
         }, observerOptions);
@@ -954,7 +959,7 @@
                 
                 setTimeout(() => {
                     ripple.remove();
-                }, 600);
+                }, RIPPLE_DURATION);
             });
         });
     </script>
