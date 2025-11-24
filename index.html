@@ -350,7 +350,7 @@
             right: -2px;
             bottom: -2px;
             background: linear-gradient(45deg, #3b82f6, #991b1b, #3b82f6);
-            background-size: 400%;
+            background-size: 200%;
             border-radius: inherit;
             z-index: -1;
             opacity: 0;
@@ -1046,6 +1046,11 @@
         const RIPPLE_DURATION = 800; // milliseconds for ripple animation
         const PARALLAX_SPEED = 0.5; // parallax scroll speed multiplier
         
+        // Throttling flags for different scroll handlers
+        let progressTicking = false;
+        let navTicking = false;
+        let parallaxTicking = false;
+        
         // Premium Loading Animation
         window.addEventListener('load', () => {
             const loadingOverlay = document.getElementById('loading-overlay');
@@ -1056,54 +1061,63 @@
             }, 800);
         });
         
-        // Enhanced Progress Bar with Smooth Animation
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const progressBar = document.getElementById('progress-bar');
-                    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const scrolled = (window.pageYOffset / windowHeight) * 100;
-                    progressBar.style.width = scrolled + '%';
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-        
-        // Premium Navbar with Smooth Transitions
-        const nav = document.querySelector('nav');
+        // Consolidated Scroll Handler for Performance
         let lastScrollY = window.pageYOffset;
         
         window.addEventListener('scroll', () => {
             const currentScrollY = window.pageYOffset;
             
-            if (currentScrollY > 100) {
-                nav.classList.add('scrolled');
+            // Progress Bar
+            if (!progressTicking) {
+                window.requestAnimationFrame(() => {
+                    const progressBar = document.getElementById('progress-bar');
+                    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (currentScrollY / windowHeight) * 100;
+                    progressBar.style.width = scrolled + '%';
+                    progressTicking = false;
+                });
+                progressTicking = true;
+            }
+            
+            // Navbar Effects
+            if (!navTicking) {
+                window.requestAnimationFrame(() => {
+                    const nav = document.querySelector('nav');
+                    if (currentScrollY > 100) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                    navTicking = false;
+                });
+                navTicking = true;
+            }
+            
+            // Parallax Effects
+            if (!parallaxTicking) {
+                window.requestAnimationFrame(() => {
+                    const heroPattern = document.querySelector('.hero-pattern');
+                    if (heroPattern) {
+                        const parallaxOffset = currentScrollY * PARALLAX_SPEED;
+                        heroPattern.style.transform = `translateY(${parallaxOffset * 0.3}px)`;
+                    }
+                    parallaxTicking = false;
+                });
+                parallaxTicking = true;
+            }
+            
+            // Scroll-to-Top Button
+            const scrollTopButton = document.getElementById('scroll-top');
+            if (currentScrollY > 300) {
+                scrollTopButton.classList.remove('hidden');
+                scrollTopButton.classList.add('flex', 'items-center', 'justify-center');
             } else {
-                nav.classList.remove('scrolled');
+                scrollTopButton.classList.add('hidden');
+                scrollTopButton.classList.remove('flex', 'items-center', 'justify-center');
             }
             
             lastScrollY = currentScrollY;
         });
-        
-        // Parallax Effect for Hero Section
-        const heroPattern = document.querySelector('.hero-pattern');
-        const heroLogo = document.querySelector('.hero-logo');
-        
-        if (heroPattern && heroLogo) {
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        const scrolled = window.pageYOffset;
-                        const parallaxOffset = scrolled * PARALLAX_SPEED;
-                        heroPattern.style.transform = `translateY(${parallaxOffset * 0.3}px)`;
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            });
-        }
         
         // Magnetic Effect for Buttons
         document.querySelectorAll('.btn-primary').forEach(button => {
@@ -1160,19 +1174,8 @@
             });
         });
         
-        // Premium Scroll to Top Button
+        // Scroll to Top Button Click
         const scrollTopButton = document.getElementById('scroll-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopButton.classList.remove('hidden');
-                scrollTopButton.classList.add('flex', 'items-center', 'justify-center');
-            } else {
-                scrollTopButton.classList.add('hidden');
-                scrollTopButton.classList.remove('flex', 'items-center', 'justify-center');
-            }
-        });
-        
         scrollTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1329,28 +1332,6 @@
             }
         `;
         document.head.appendChild(style);
-        
-        // Smooth Parallax for Service Cards on Scroll
-        const serviceCards = document.querySelectorAll('.service-card');
-        if (serviceCards.length > 0) {
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        serviceCards.forEach((card, index) => {
-                            const rect = card.getBoundingClientRect();
-                            const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
-                            
-                            if (scrollPercent > 0 && scrollPercent < 1) {
-                                const moveY = (scrollPercent - 0.5) * 20 * (index % 2 === 0 ? 1 : -1);
-                                card.style.transform = `translateY(${moveY}px)`;
-                            }
-                        });
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            });
-        }
         
         // Add hover glow effect to service card icons
         document.querySelectorAll('.service-card').forEach(card => {
