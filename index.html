@@ -1,63 +1,619 @@
-<html>
-  <head>
-  <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Falcon 98 - Your Trusted Technology Services Provider offering Web Development, Mobile App Development, Cloud Computing, Data Analytics, and IT Consulting">
+    <meta name="keywords" content="technology services, web development, mobile apps, cloud computing, data analytics, IT consulting, Sri Lanka">
+    <meta name="author" content="Falcon 98">
     <title>Falcon 98 - Technology Services Provider</title>
-    <link rel="shortcut icon" href="/Falcon_98-1.png">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  </head>
-  
-  <body class="bg-gray-100">
-
-    <header class="bg-gray-800 text-white text-center py-4 relative">
-        <!-- Favicon in the middle of the page -->
-        <img src="/Falcon_98-1.png" alt="Falcon 98 Favicon" class="mx-auto h-16 w-16 absolute top-2 left-0 right-0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         
-        <h1 class="text-3xl font-bold mt-10">Falcon 98</h1>
-        <p class="text-sm">Your Trusted Technology Services Provider</p>
-    </header>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #991b1b 100%);
+        }
+        
+        .hero-pattern {
+            background-color: #1f2937;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234b5563' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
 
-    <section class="max-w-4xl mx-auto mt-8 p-8 bg-white shadow-lg rounded-lg">
-        <h2 class="text-2xl font-bold mb-4">Welcome to Falcon 98</h2>
-        <p class="text-gray-700">
-            Falcon 98 is a technology services provider committed to delivering innovative solutions 
-            that empower businesses in the digital era. With a focus on excellence and customer satisfaction, 
-            we bring together cutting-edge technology and industry expertise to drive success.
-        </p>
+<body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav class="bg-gray-900 text-white fixed w-full top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" alt="Falcon 98 Logo" class="h-10 w-10 mr-3">
+                    <span class="font-bold text-xl">Falcon 98</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500">Home</a>
+                        <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500">About</a>
+                        <a href="#services" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500">Services</a>
+                        <a href="#contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md hover:text-blue-500 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-800">
+                <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Home</a>
+                <a href="#about" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">About</a>
+                <a href="#services" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Services</a>
+                <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-blue-500">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-        <h2 class="text-2xl font-bold mt-8 mb-4">Our Vision</h2>
-        <p class="text-gray-700">
-            To be a leading force in the technology industry, driving positive change through 
-            creativity, innovation, and a commitment to excellence.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Our Mission</h2>
-        <p class="text-gray-700">
-            We aim to empower businesses with transformative technology solutions that enhance 
-            efficiency, foster growth, and create lasting value for our clients and partners.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Our Services</h2>
-        <ul class="list-disc pl-6">
-            <li class="text-gray-700">Web Development</li>
-            <li class="text-gray-700">Mobile App Development</li>
-            <li class="text-gray-700">Cloud Computing</li>
-            <li class="text-gray-700">Data Analytics</li>
-            <li class="text-gray-700">IT Consulting</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Contact Us</h2>
-        <p class="text-gray-700">
-            <span class="block">Address: No. 39/2, Nungamuwa, Pallwela, Sri Lanka 11150</span>
-            <span class="block">Phone: <a href="tel:+94784464128">(078) 446-4128</a> | <a href="tel:+94113401721">(011) 340-1721</a></span>
-            <span class="block">Email: info@falcon98.com</span>
-        </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+            <div class="text-center fade-in">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" alt="Falcon 98 Logo" class="h-24 w-24 md:h-32 md:w-32 mx-auto mb-8">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Welcome to <span class="text-blue-500">Falcon 98</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Your Trusted Technology Services Provider
+                </p>
+                <p class="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
+                    Empowering businesses with innovative technology solutions in the digital era
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#services" class="btn-primary inline-block bg-red-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-800">
+                        Our Services
+                    </a>
+                    <a href="#contact" class="btn-primary inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer class="bg-gray-800 text-white text-center py-4 mt-8">
-        &copy; 2023 Falcon 98. All rights reserved.
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">About Falcon 98</h2>
+                <div class="w-24 h-1 bg-red-700 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg bg-gray-50 service-card">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lightbulb text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+                    <p class="text-gray-700">
+                        To be a leading force in the technology industry, driving positive change through 
+                        creativity, innovation, and a commitment to excellence.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 rounded-lg bg-gray-50 service-card">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bullseye text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                    <p class="text-gray-700">
+                        We aim to empower businesses with transformative technology solutions that enhance 
+                        efficiency, foster growth, and create lasting value for our clients and partners.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 rounded-lg bg-gray-50 service-card">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Team</h3>
+                    <p class="text-gray-700">
+                        A dedicated team of technology experts committed to delivering innovative solutions 
+                        that empower businesses in the digital era with excellence and customer satisfaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+                <div class="w-24 h-1 bg-red-700 mx-auto mb-4"></div>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Comprehensive technology solutions tailored to meet your business needs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Web Development -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Web Development</h3>
+                    <p class="text-gray-700 mb-4">
+                        Create stunning, responsive websites that engage your audience and drive business growth with modern web technologies.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Custom Website Design</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>E-commerce Solutions</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>CMS Development</li>
+                    </ul>
+                </div>
+                
+                <!-- Mobile App Development -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Mobile App Development</h3>
+                    <p class="text-gray-700 mb-4">
+                        Build powerful mobile applications for iOS and Android that deliver exceptional user experiences.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Native App Development</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Cross-Platform Solutions</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>App Maintenance</li>
+                    </ul>
+                </div>
+                
+                <!-- Cloud Computing -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Cloud Computing</h3>
+                    <p class="text-gray-700 mb-4">
+                        Leverage the power of cloud technology to scale your infrastructure and optimize operations.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Cloud Migration</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Infrastructure Management</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>DevOps Services</li>
+                    </ul>
+                </div>
+                
+                <!-- Data Analytics -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Data Analytics</h3>
+                    <p class="text-gray-700 mb-4">
+                        Transform your data into actionable insights with advanced analytics and business intelligence solutions.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Business Intelligence</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Data Visualization</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Predictive Analytics</li>
+                    </ul>
+                </div>
+                
+                <!-- IT Consulting -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-tie text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">IT Consulting</h3>
+                    <p class="text-gray-700 mb-4">
+                        Expert guidance and strategic planning to help you make informed technology decisions.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Technology Strategy</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Digital Transformation</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Security Assessment</li>
+                    </ul>
+                </div>
+                
+                <!-- Additional Service -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-3xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Custom Solutions</h3>
+                    <p class="text-gray-700 mb-4">
+                        Tailored technology solutions designed specifically for your unique business requirements.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>Software Development</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>API Integration</li>
+                        <li><i class="fas fa-check text-red-700 mr-2"></i>System Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <div class="w-24 h-1 bg-red-700 mx-auto mb-4"></div>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Get in touch with us to discuss how we can help transform your business
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-red-700"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-900">Address</h4>
+                                <p class="text-gray-600">No. 39/2, Nungamuwa, Pallwela<br>Sri Lanka 11150</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-phone text-red-700"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-900">Phone</h4>
+                                <p class="text-gray-600">
+                                    <a href="tel:+94784464128" class="hover:text-red-700">(078) 446-4128</a><br>
+                                    <a href="tel:+94113401721" class="hover:text-red-700">(011) 340-1721</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-red-700"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-900">Email</h4>
+                                <p class="text-gray-600">
+                                    <a href="mailto:info@falcon98.com" class="hover:text-red-700">info@falcon98.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-clock text-red-700"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-900">Business Hours</h4>
+                                <p class="text-gray-600">
+                                    Monday - Friday: 9:00 AM - 6:00 PM<br>
+                                    Saturday: 10:00 AM - 4:00 PM
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-700 focus:border-transparent"
+                                placeholder="John Doe">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-700 focus:border-transparent"
+                                placeholder="john@example.com">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-700 focus:border-transparent"
+                                placeholder="+94 78 446 4128">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interested In</label>
+                            <select id="service" name="service"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-700 focus:border-transparent">
+                                <option value="">Select a service</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="mobile-app">Mobile App Development</option>
+                                <option value="cloud-computing">Cloud Computing</option>
+                                <option value="data-analytics">Data Analytics</option>
+                                <option value="it-consulting">IT Consulting</option>
+                                <option value="custom-solutions">Custom Solutions</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" name="message" required rows="4"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-700 focus:border-transparent"
+                                placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        
+                        <button type="submit"
+                            class="btn-primary w-full bg-red-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-800">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="form-message" class="mt-4 text-center hidden"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" alt="Falcon 98 Logo" class="h-12 w-12 mr-3">
+                        <span class="font-bold text-2xl">Falcon 98</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Your Trusted Technology Services Provider. Empowering businesses with innovative 
+                        technology solutions in the digital era.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-blue-500 transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-blue-500 transition">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-500 transition">Services</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-blue-500 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-500 transition">Web Development</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-500 transition">Mobile Apps</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-500 transition">Cloud Computing</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-500 transition">IT Consulting</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; <span id="current-year"></span> Falcon 98. All rights reserved. | 
+                    <a href="#" class="hover:text-blue-500">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-blue-500">Terms of Service</a>
+                </p>
+            </div>
+        </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="fixed bottom-8 right-8 bg-red-700 text-white w-12 h-12 rounded-full shadow-lg hover:bg-red-800 transition hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 64;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll to Top Button
+        const scrollTopButton = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopButton.classList.remove('hidden');
+                scrollTopButton.classList.add('flex', 'items-center', 'justify-center');
+            } else {
+                scrollTopButton.classList.add('hidden');
+                scrollTopButton.classList.remove('flex', 'items-center', 'justify-center');
+            }
+        });
+        
+        scrollTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Contact Form Handling
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Validate email - use browser's built-in validation by checking input validity
+            const emailInput = document.getElementById('email');
+            if (!emailInput.checkValidity()) {
+                showFormMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Simulate form submission (in production, this would send to a server)
+            showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
+            contactForm.reset();
+        });
+        
+        function showFormMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.classList.remove('hidden');
+            
+            if (type === 'success') {
+                formMessage.classList.remove('text-red-600');
+                formMessage.classList.add('text-green-600');
+            } else {
+                formMessage.classList.remove('text-green-600');
+                formMessage.classList.add('text-red-600');
+            }
+            
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+        
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe service cards and other elements
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
 
