@@ -477,7 +477,7 @@
             
             <div class="border-t border-gray-800 mt-8 pt-8 text-center">
                 <p class="text-gray-400">
-                    &copy; <span id="current-year">2024</span> Falcon 98. All rights reserved. | 
+                    &copy; <span id="current-year"></span> Falcon 98. All rights reserved. | 
                     <a href="#" class="hover:text-purple-400">Privacy Policy</a> | 
                     <a href="#" class="hover:text-purple-400">Terms of Service</a>
                 </p>
@@ -486,7 +486,7 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-top" class="fixed bottom-8 right-8 bg-purple-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-purple-700 transition hidden items-center justify-center">
+    <button id="scroll-top" class="fixed bottom-8 right-8 bg-purple-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-purple-700 transition hidden">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -529,10 +529,10 @@
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollTopButton.classList.remove('hidden');
-                scrollTopButton.classList.add('flex');
+                scrollTopButton.classList.add('flex', 'items-center', 'justify-center');
             } else {
                 scrollTopButton.classList.add('hidden');
-                scrollTopButton.classList.remove('flex');
+                scrollTopButton.classList.remove('flex', 'items-center', 'justify-center');
             }
         });
         
@@ -559,9 +559,9 @@
                 message: document.getElementById('message').value
             };
             
-            // Validate email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.email)) {
+            // Validate email - use browser's built-in validation by checking input validity
+            const emailInput = document.getElementById('email');
+            if (!emailInput.checkValidity()) {
                 showFormMessage('Please enter a valid email address.', 'error');
                 return;
             }
