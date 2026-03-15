@@ -1,0 +1,29 @@
+{
+  "name": "Falcon 98 - Technology Services Provider",
+  "short_name": "Falcon 98",
+  "description": "Empowering businesses with innovative technology solutions - Web Development, Mobile Apps, Cloud Computing, Data Analytics, IT Consulting",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1e",
+  "theme_color": "#0a0f1e",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "technology", "productivity"],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

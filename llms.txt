@@ -1,0 +1,62 @@
+# Falcon 98 - Technology Services Provider
+
+> Falcon 98 is a technology services company based in Sri Lanka, providing innovative solutions for web development, mobile applications, cloud computing, data analytics, IT consulting, and custom software solutions.
+
+## Company Overview
+
+Falcon 98 empowers businesses with future-ready technology solutions. We specialize in:
+
+- **Web Development**: Custom websites, e-commerce solutions, CMS development
+- **Mobile App Development**: Native and cross-platform mobile applications
+- **Cloud Computing**: Cloud migration, infrastructure management, DevOps
+- **Data Analytics**: Business intelligence, data visualization, predictive analytics
+- **IT Consulting**: Technology strategy, digital transformation, security assessment
+- **Custom Solutions**: Bespoke software, API integration, system optimization
+
+## Our Products
+
+1. **Falcon Forge** - Universal file converter for images, documents, video, and audio
+   - URL: https://falcon-forge.github.io/
+   - Features: 30+ formats, browser-based, privacy-focused
+
+2. **FalconStream Pro** - M3U stream player for IPTV
+   - URL: https://falconstream-pro.github.io/
+   - Features: HLS.js, M3U parser, browser-based streaming
+
+3. **Falcon Tracker** - RTT Analysis Dashboard
+   - URL: https://falcon-tracker.github.io/
+   - Features: WhatsApp, Signal, Threema monitoring
+
+4. **MeetAcross** - Global timezone meeting scheduler
+   - URL: https://meetacross.github.io/
+   - Features: Google Meet, Teams, Zoom integration
+
+5. **Blue Team Cyber Dashboard** - Cybersecurity operations platform
+   - URL: https://ashenwijesingha.github.io/RTO-v2/
+   - Features: Threat intelligence, SIEM builders, incident response
+
+## Contact Information
+
+- **Location**: No. 39/2, Nungamuwa, Pallwela, Sri Lanka 11150
+- **Phone**: +94 78 446 4128, +94 11 340 1721
+- **Email**: info@falcon98.com
+- **Website**: https://falcon98.com
+
+## Business Hours
+
+- Monday - Friday: 9:00 AM - 6:00 PM
+- Saturday: 10:00 AM - 4:00 PM
+
+## Technology Stack
+
+Falcon 98 works with modern technologies including:
+- Frontend: HTML5, CSS3, JavaScript, React, Vue.js
+- Backend: Node.js, Python, Java, .NET
+- Cloud: AWS, Azure, Google Cloud
+- Mobile: iOS, Android, Flutter, React Native
+- DevOps: Docker, Kubernetes, CI/CD
+
+## Links
+
+- Main Website: https://falcon98.com
+- GitHub: https://github.com/Falcon-98
