@@ -13,6 +13,19 @@ const ASSETS_TO_CACHE = [
   'https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png'
 ];
 
+// Allowed external hostnames for caching (exact match for security)
+const ALLOWED_EXTERNAL_HOSTS = [
+  'res.cloudinary.com',
+  'fonts.googleapis.com',
+  'fonts.gstatic.com',
+  'cdnjs.cloudflare.com'
+];
+
+// Check if hostname is in allowed list (exact match)
+function isAllowedExternalHost(hostname) {
+  return ALLOWED_EXTERNAL_HOSTS.some(allowedHost => hostname === allowedHost);
+}
+
 // Install event
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -42,13 +55,9 @@ self.addEventListener('fetch', (event) => {
   // Skip non-GET requests
   if (event.request.method !== 'GET') return;
   
-  // Skip cross-origin requests except for CDN resources
+  // Skip cross-origin requests except for allowed CDN resources
   const url = new URL(event.request.url);
-  if (url.origin !== location.origin && 
-      !url.hostname.includes('cloudinary.com') &&
-      !url.hostname.includes('fonts.googleapis.com') &&
-      !url.hostname.includes('fonts.gstatic.com') &&
-      !url.hostname.includes('cdnjs.cloudflare.com')) {
+  if (url.origin !== location.origin && !isAllowedExternalHost(url.hostname)) {
     return;
   }
 
