@@ -1,7 +1,7 @@
 // Falcon 98 Service Worker
-// Version 1.0.0
+// Version 1.1.0
 
-const CACHE_NAME = 'falcon98-v1';
+const CACHE_NAME = 'falcon98-v2';
 const OFFLINE_URL = '/404.html';
 
 // Assets to cache
