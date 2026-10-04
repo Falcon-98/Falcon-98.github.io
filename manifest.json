@@ -1,7 +1,7 @@
 {
-  "name": "Falcon 98 - Technology Services Provider",
+  "name": "Falcon 98 – Software Company in Sri Lanka",
   "short_name": "Falcon 98",
-  "description": "Empowering businesses with innovative technology solutions - Web Development, Mobile Apps, Cloud Computing, Data Analytics, IT Consulting",
+  "description": "Falcon 98 – software solutions company in Sri Lanka: custom software, web & mobile app development, cloud, AI, data analytics, cybersecurity and IT consulting.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0f1e",
@@ -38,7 +38,13 @@
       "type": "image/png"
     }
   ],
-  "categories": ["business", "technology", "productivity"],
+  "categories": [
+    "business",
+    "technology",
+    "productivity",
+    "developer"
+  ],
   "screenshots": [],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "id": "/"
 }
