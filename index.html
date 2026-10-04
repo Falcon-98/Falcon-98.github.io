@@ -905,6 +905,34 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .nav.scrolled .nav-toggle{color:var(--ink);border-color:var(--line-2)}
 .nav.scrolled .btn-ghost{color:var(--ink);border-color:var(--line-2);background:#fff}
 @media(min-width:1040px){.nav-links{display:flex}.nav-toggle{display:none}.nav-cta{display:inline-flex}}
+/* Desktop: iOS-style liquid-glass floating navigation */
+@media(min-width:1040px){
+  .nav,.nav.scrolled{top:14px;height:auto;background:transparent;border-bottom-color:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav .container{position:relative;width:calc(100% - 48px);max-width:1180px;padding:.5rem .55rem .5rem 1rem;border-radius:var(--r-full);isolation:isolate;
+    background:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.06) 100%);
+    -webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);
+    border:1px solid rgba(255,255,255,.22);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 0 rgba(255,255,255,.06),inset 0 0 0 1px rgba(255,255,255,.04),0 12px 40px -14px rgba(0,0,0,.55);
+    transition:background var(--t) var(--ease),border-color var(--t) var(--ease),box-shadow var(--t) var(--ease)}
+  .nav .container::before{content:'';position:absolute;inset:1px;border-radius:inherit;z-index:-1;pointer-events:none;
+    background:radial-gradient(120% 140% at 12% -40%,rgba(255,255,255,.28),transparent 45%),radial-gradient(90% 120% at 95% 140%,rgba(255,255,255,.12),transparent 50%)}
+  .nav-link{border-radius:var(--r-full)}
+  .nav-link:hover{background:rgba(255,255,255,.12)}
+  .nav-link.active{background:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 0 0 1px rgba(255,255,255,.12)}
+  .nav-link.active::after{display:none}
+  .nav .btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+  .nav .btn-ghost:hover{background:rgba(255,255,255,.16)}
+  /* Scrolled over light content: frosted white glass */
+  .nav.scrolled .container{background:linear-gradient(180deg,rgba(255,255,255,.68) 0%,rgba(255,255,255,.46) 100%);border-color:rgba(255,255,255,.75);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(10,15,30,.04),0 1px 2px rgba(10,15,30,.06),0 16px 44px -16px rgba(10,15,30,.28)}
+  .nav.scrolled .container::before{background:radial-gradient(120% 140% at 12% -40%,rgba(255,255,255,.9),transparent 45%)}
+  .nav.scrolled .nav-link:hover{background:rgba(10,15,30,.05)}
+  .nav.scrolled .nav-link.active{color:var(--ink);background:rgba(255,255,255,.85);box-shadow:inset 0 1px 0 #fff,0 1px 3px rgba(10,15,30,.1),0 0 0 1px rgba(10,15,30,.05)}
+  .nav.scrolled .btn-ghost{background:rgba(255,255,255,.7);border-color:rgba(10,15,30,.1);box-shadow:inset 0 1px 0 #fff}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  @media(min-width:1040px){.nav .container{background:rgba(13,20,40,.92)}.nav.scrolled .container{background:rgba(255,255,255,.96)}}
+}
 
 /* Drawer */
 .drawer-overlay{position:fixed;inset:0;background:rgba(6,10,23,.55);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:all var(--t) var(--ease);z-index:1100}
