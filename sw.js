@@ -1,7 +1,7 @@
 // Falcon 98 Service Worker
 // Version 2.0.0
 
-const CACHE_NAME = 'falcon98-v6';
+const CACHE_NAME = 'falcon98-v7';
 const OFFLINE_URL = '/404.html';
 
 // Assets to cache
@@ -10,7 +10,7 @@ const ASSETS_TO_CACHE = [
   '/index.html',
   '/404.html',
   '/manifest.json',
-  'https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png'
+  'https://res.cloudinary.com/dkj22lm1g/image/upload/w_96,h_96,c_fill,f_auto,q_auto/v1763972046/Falcon_98-1_cx8xvv.png'
 ];
 
 // Allowed external hostnames for caching (exact match for security)
