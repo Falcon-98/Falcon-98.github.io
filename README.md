@@ -84,7 +84,7 @@ Falcon-98.github.io/
 
 ## 📞 Contact Us
 
-- **Address**: No. 39/2, Nungamuwa, Pallwela, Sri Lanka 11150
+- **Address**: No. 39/2, Nungamuwa, Pallewela, Sri Lanka 11150
 - **Phone**: [+94 78 446 4128](tel:+94784464128)
 - **Email**: [info@falcon98.com](mailto:info@falcon98.com)
 - **Website**: [https://falcon98.com](https://falcon98.com)
