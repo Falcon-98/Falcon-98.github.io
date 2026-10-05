@@ -1,4 +1,4 @@
-# robots.txt for Falcon 98 – Software Company in Sri Lanka
+# robots.txt for Falcon 98, Software Company in Colombo, Sri Lanka
 # https://falcon98.com
 
 User-agent: *
@@ -26,7 +26,7 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# AI assistants & generative search (GEO) – welcome
+# AI assistants and generative search (GEO) are welcome
 User-agent: GPTBot
 Allow: /
 

@@ -4,7 +4,7 @@ Role: Software solutions company in Sri Lanka
 Site: https://falcon98.com
 Contact: info@falcon98.com
 GitHub: https://github.com/Falcon-98
-Location: No. 39/2, Nungamuwa, Pallewela 11150, Sri Lanka
+Location: Colombo, Sri Lanka
 
 /* SITE */
 Last update: 2026/10/04
