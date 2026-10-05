@@ -4,7 +4,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://falcon98.com/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://falcon98.com/"/>
@@ -12,11 +12,11 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://falcon98.com/"/>
     <image:image>
       <image:loc>https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png</image:loc>
-      <image:title>Falcon 98 – Software Company in Sri Lanka</image:title>
+      <image:title>Falcon 98, Software Company in Colombo, Sri Lanka</image:title>
     </image:image>
     <image:image>
       <image:loc>https://res.cloudinary.com/dkj22lm1g/image/upload/v1771081619/FalconStream-Pro_jqpcgb.webp</image:loc>
-      <image:title>FalconStream Pro – IPTV player by Falcon 98</image:title>
+      <image:title>FalconStream Pro IPTV player by Falcon 98</image:title>
     </image:image>
   </url>
 </urlset>

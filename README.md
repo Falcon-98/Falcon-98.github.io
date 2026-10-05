@@ -1,4 +1,4 @@
-# Falcon 98 - Technology Services Provider
+# Falcon 98: Software Company in Colombo, Sri Lanka
 
 <div align="center">
   <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1763972046/Falcon_98-1_cx8xvv.png" alt="Falcon 98 Logo" width="120" height="120"/>
@@ -14,7 +14,7 @@
 
 ## 🚀 About Us
 
-Falcon 98 is a passionate technology company headquartered in Sri Lanka, dedicated to building products that make a real difference. We empower businesses with innovative solutions — from custom software to cloud infrastructure.
+Falcon 98 is a passionate technology company headquartered in Sri Lanka, dedicated to building products that make a real difference. We empower businesses with innovative solutions, from custom software to cloud infrastructure.
 
 ## 💼 Our Services
 
@@ -30,7 +30,7 @@ Falcon 98 is a passionate technology company headquartered in Sri Lanka, dedicat
 ## 🛠️ Our Projects
 
 ### [Falcon Forge](https://falcon-forge.github.io/)
-Universal file converter — images, documents, video, audio. All in-browser with complete privacy.
+Universal file converter for images, documents, video and audio. All in-browser with complete privacy.
 
 ### [FalconStream Pro](https://falconstream-pro.github.io/)
 Feature-rich M3U stream player for IPTV channels with HLS.js support.
@@ -42,7 +42,7 @@ Advanced RTT Analysis Dashboard for delivery receipt monitoring across WhatsApp,
 Smart meeting scheduler across global time zones with Google Meet, Teams, and Zoom integration.
 
 ### [Blue Team Cyber Dashboard](https://ashenwijesingha.github.io/RTO-v2/)
-Comprehensive cyber ops platform — threat intelligence, incident response, SIEM builders.
+Comprehensive cyber ops platform covering threat intelligence, incident response and SIEM builders.
 
 ## 📁 Project Structure
 
@@ -84,7 +84,7 @@ Falcon-98.github.io/
 
 ## 📞 Contact Us
 
-- **Address**: No. 39/2, Nungamuwa, Pallewela, Sri Lanka 11150
+- **Location**: Colombo, Sri Lanka
 - **Phone**: [+94 78 446 4128](tel:+94784464128)
 - **Email**: [info@falcon98.com](mailto:info@falcon98.com)
 - **Website**: [https://falcon98.com](https://falcon98.com)
