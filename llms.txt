@@ -39,6 +39,7 @@ Falcon 98 (also written "Falcon98") is headquartered at No. 39/2, Nungamuwa, Pal
 
 - [Falcon Forge](https://falcon-forge.github.io/): universal in-browser file converter, 30+ formats, no uploads
 - [Ferry](https://ferry-share.github.io/): end-to-end encrypted, peer-to-peer sharing of passwords, text and files between devices; no account, nothing stored
+- [Rekiya (VacancyFinder)](https://vacancyfinder.github.io/): Sri Lanka job search app that collects vacancies from official company career pages every 3 hours, with search, alerts and an application tracker
 - [Jobs and Interns](https://jobs-and-interns.github.io/): Sri Lankan platform connecting undergraduates with verified jobs and internships
 - [RECON-98](https://recon-98.github.io/): client-side domain intelligence and reconnaissance toolkit for authorised security testing
 - [MedReader-SL](https://medreader-sl.github.io/): medical prescription OCR with AI-powered medical-term correction
