@@ -47,6 +47,7 @@ Falcon 98 (also written "Falcon98") is based in Colombo, Sri Lanka, and was foun
 - [RoleFit CV Studio](https://rolefit-cv-studio.github.io/): browser-only CV builder that generates job-aligned CV variants
 - [Subtitle Forge](https://subtitle-forge.github.io/): SRT subtitle generator and in-browser subtitle burner (FFmpeg.wasm)
 - [Instax Studio Pro](https://instax-studio-pro.github.io/): instant photo print designer with Instax-style filters and frames
+- [Raffle Draw App](https://falcon-98.github.io/Raffle-Draw-App/): animated live lucky draw for events with an admin console, Excel import, certified-random draws and a live audience view
 - [MeetAcross](https://meetacross.github.io/): meeting scheduler across time zones with Google Meet, Teams and Zoom
 - [FalconStream Pro](https://falconstream-pro.github.io/): M3U / IPTV stream player
 - [GeoTracker Pro](https://geotracker-pro.github.io/): real-time location tracking with Firebase and a management dashboard
