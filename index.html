@@ -1529,8 +1529,10 @@ textarea.form-control{resize:vertical;min-height:130px}
     </address>
     <div class="form-card" data-animate>
       <h3 id="form-heading">Send us a message</h3>
-      <p>Fill in the details and choose how to send it: by email or WhatsApp.</p>
-      <form id="contact-form" aria-labelledby="form-heading" novalidate>
+      <p>Fill in the details and we'll reply by email. Prefer chat? Send it on WhatsApp instead.</p>
+      <form id="contact-form" action="https://formspree.io/f/moejzbzb" method="POST" aria-labelledby="form-heading" novalidate>
+        <input type="hidden" name="_subject" value="New enquiry from the Falcon 98 website"/>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
         <div class="form-row two">
           <div class="form-group"><label for="name">Full name <span class="req" aria-hidden="true">*</span></label><input class="form-control" type="text" id="name" name="name" required autocomplete="name" placeholder="Your name"/></div>
           <div class="form-group"><label for="email">Email <span class="req" aria-hidden="true">*</span></label><input class="form-control" type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com"/></div>
@@ -1541,7 +1543,7 @@ textarea.form-control{resize:vertical;min-height:130px}
         </div>
         <div class="form-row"><div class="form-group"><label for="message">Project details <span class="req" aria-hidden="true">*</span></label><textarea class="form-control" id="message" name="message" required rows="5" placeholder="Tell us about your project, goals and timeline…"></textarea></div></div>
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary" data-via="email"><svg class="ico i-paper-plane" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#s-paper-plane"/></svg> Send via email</button>
+          <button type="submit" class="btn btn-primary" data-via="form" id="form-submit"><svg class="ico i-paper-plane" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#s-paper-plane"/></svg> <span>Send message</span></button>
           <button type="submit" class="btn btn-wa" data-via="whatsapp"><svg class="ico i-whatsapp" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#b-whatsapp"/></svg> Send via WhatsApp</button>
         </div>
         <div id="form-msg" class="form-msg" role="status" aria-live="polite"></div>
@@ -1632,10 +1634,12 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('[data-animate]').forEach(function(el){obs.observe(el)});
 }else{document.querySelectorAll('[data-animate]').forEach(function(el){el.classList.add('visible')})}
 
-// Contact form: compose the enquiry and hand it to the visitor's email app or WhatsApp
-var form=$('contact-form'),msg=$('form-msg'),via='email';
+// Contact form: sends to Formspree in the background (plain POST still works without JS); WhatsApp as an alternative
+var form=$('contact-form'),msg=$('form-msg'),submitBtn=$('form-submit'),via='form';
 form.querySelectorAll('[data-via]').forEach(function(b){b.addEventListener('click',function(){via=b.dataset.via})});
-function fail(el,text){msg.textContent=text;msg.className='form-msg error';el.setAttribute('aria-invalid','true');el.focus()}
+function say(text,kind){msg.textContent=text;msg.className='form-msg '+kind}
+function fail(el,text){say(text,'error');el.setAttribute('aria-invalid','true');el.focus()}
+function busy(on){submitBtn.disabled=on;submitBtn.setAttribute('aria-busy',on?'true':'false');submitBtn.querySelector('span').textContent=on?'Sending\u2026':'Send message'}
 form.addEventListener('input',function(e){e.target.removeAttribute('aria-invalid')});
 form.addEventListener('submit',function(e){
   e.preventDefault();
@@ -1644,11 +1648,24 @@ form.addEventListener('submit',function(e){
   if(!email.value.trim()||!email.checkValidity())return fail(email,'Please enter a valid email address.');
   if(!message.value.trim())return fail(message,'Please tell us a little about your project.');
   var svc=service.value?service.options[service.selectedIndex].text:'Not specified';
-  var body='Name: '+name.value.trim()+'\nEmail: '+email.value.trim()+'\nPhone: '+(phone.value.trim()||'-')+'\nService: '+svc+'\n\n'+message.value.trim();
-  if(via==='whatsapp'){window.open('https://wa.me/94784464128?text='+encodeURIComponent('Hello Falcon 98!\n\n'+body),'_blank','noopener')}
-  else{window.location.href='mailto:info@falcon98.com?subject='+encodeURIComponent('Project enquiry: '+svc+' ('+name.value.trim()+')')+'&body='+encodeURIComponent(body)}
-  msg.textContent=via==='whatsapp'?'✓ WhatsApp opened with your message. Just press send.':'✓ Your email app opened with your message. Just press send. No email app? Write to info@falcon98.com.';
-  msg.className='form-msg success';
+  if(via==='whatsapp'){
+    var body='Name: '+name.value.trim()+'\nEmail: '+email.value.trim()+'\nPhone: '+(phone.value.trim()||'-')+'\nService: '+svc+'\n\n'+message.value.trim();
+    window.open('https://wa.me/94784464128?text='+encodeURIComponent('Hello Falcon 98!\n\n'+body),'_blank','noopener');
+    return say('\u2713 WhatsApp opened with your message. Just press send.','success');
+  }
+  var data=new FormData(form);
+  data.set('service',svc);
+  data.set('_subject','New enquiry: '+svc+' from '+name.value.trim());
+  busy(true);say('Sending your message\u2026','');msg.style.display='block';
+  fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,j:j}})})
+    .then(function(res){
+      msg.style.display='';
+      if(res.ok){form.reset();say('\u2713 Thank you! Your message has been sent. We will get back to you soon.','success')}
+      else{var errs=(res.j&&res.j.errors||[]).map(function(x){var m=String(x.message||'');return m.charAt(0).toUpperCase()+m.slice(1).replace(/\.?$/,'.')}).join(' ');say((errs||'Sorry, your message could not be sent.')+' Please try again or email info@falcon98.com.','error')}
+    })
+    .catch(function(){msg.style.display='';say('Network problem: your message was not sent. Please check your connection and try again, or email info@falcon98.com.','error')})
+    .then(function(){busy(false)});
 });
 
 // Project filters
