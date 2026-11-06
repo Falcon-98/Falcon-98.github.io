@@ -60,9 +60,9 @@ Falcon 98 (also written "Falcon98") is based in Colombo, Sri Lanka, and was foun
 ### Client websites
 
 - [Dev Ceylon](https://dev-ceylon.github.io/): corporate website for a Sri Lankan web and mobile app development company
-- [MSS Travels & Tours](https://mss-travels-tours.github.io/): UK and Sri Lanka tour packages and cricket coaching website
+- [MSS Travels & Tours](https://mss-travels-tours.github.io/): website for a UK and Sri Lanka travel company: Sri Lanka holiday packages, tours across the UK, Europe, Asia and Australia, and cricket coaching in Sri Lanka
 - [SIHINA 2026 (Team Rad KDU)](https://team-rad-kdu.github.io/Sihina/): website for KDU's Radiography Day community project renovating Urugala Sri Dharmaloka School, Ingiriya
-- [Avish Taxi](https://avishtaxi.github.io/): website for a Sri Lankan taxi and transport service
+- [Avish Taxi](https://avishtaxi.github.io/): website for a Tangalle taxi and private tour service: airport transfers, day tours, fixed route prices and WhatsApp booking
 
 ## Technology stack
 
