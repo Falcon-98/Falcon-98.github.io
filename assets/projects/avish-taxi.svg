@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Avish Taxi logo">
+  <title>Avish Taxi</title>
+  <circle cx="50" cy="50" r="49" fill="#F5C330"/>
+  <!-- roof sign -->
+  <rect x="40.5" y="15.5" width="19" height="8" rx="2" fill="#111"/>
+  <g fill="#F5C330">
+    <rect x="43" y="17.5" width="2.8" height="2"/><rect x="48.6" y="17.5" width="2.8" height="2"/><rect x="54.2" y="17.5" width="2.8" height="2"/>
+    <rect x="45.8" y="19.5" width="2.8" height="2"/><rect x="51.4" y="19.5" width="2.8" height="2"/>
+  </g>
+  <!-- cabin and windscreen -->
+  <path d="M28.5 45 L35.5 27.6 Q36.6 25 39.6 25 L60.4 25 Q63.4 25 64.5 27.6 L71.5 45 Z" fill="#111"/>
+  <path d="M34.3 43 L39.4 30.4 Q40 29 41.6 29 L58.4 29 Q60 29 60.6 30.4 L65.7 43 Z" fill="#F5C330"/>
+  <!-- mirrors -->
+  <path d="M27 42.5 Q20.5 41 18.5 44.5 Q18 46.8 21 47 L28.5 47 Z" fill="#111"/>
+  <path d="M73 42.5 Q79.5 41 81.5 44.5 Q82 46.8 79 47 L71.5 47 Z" fill="#111"/>
+  <!-- body -->
+  <path d="M18.5 54 Q18.5 45.5 27 44.5 L73 44.5 Q81.5 45.5 81.5 54 L81.5 67 Q81.5 70.5 78 70.5 L22 70.5 Q18.5 70.5 18.5 67 Z" fill="#111"/>
+  <!-- headlights, grille, bumper -->
+  <path d="M23 52.5 Q24 50 28 50.2 L36 51.5 Q38 52.5 36.5 55 Q30 57 25 56.2 Q22.5 55.5 23 52.5 Z" fill="#F5C330"/>
+  <path d="M77 52.5 Q76 50 72 50.2 L64 51.5 Q62 52.5 63.5 55 Q70 57 75 56.2 Q77.5 55.5 77 52.5 Z" fill="#F5C330"/>
+  <rect x="40" y="53" width="20" height="3" rx="1.5" fill="#F5C330"/>
+  <rect x="38" y="62" width="24" height="3.2" rx="1.6" fill="#F5C330"/>
+  <!-- wheels -->
+  <rect x="22" y="68" width="11" height="9.5" rx="2.5" fill="#111"/>
+  <rect x="67" y="68" width="11" height="9.5" rx="2.5" fill="#111"/>
+  <!-- road -->
+  <path d="M10 81 Q50 75 90 81 Q50 78.2 10 81 Z" fill="#111"/>
+</svg>
