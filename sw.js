@@ -1,7 +1,7 @@
 // Falcon 98 Service Worker
 // Version 2.0.0
 
-const CACHE_NAME = 'falcon98-v16';
+const CACHE_NAME = 'falcon98-v17';
 const OFFLINE_URL = '/404.html';
 
 // Assets to cache
@@ -61,8 +61,8 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Never route the intro video through the cache (large file, range requests, shown once)
-  if (url.origin === location.origin && url.pathname.startsWith('/assets/video/')) {
+  // Intro audio is fetched with range requests and played once: don't route it through the cache
+  if (url.origin === location.origin && url.pathname === '/assets/intro/drums.m4a') {
     return;
   }
 
