@@ -1,7 +1,7 @@
 // Falcon 98 Service Worker
 // Version 2.0.0
 
-const CACHE_NAME = 'falcon98-v15';
+const CACHE_NAME = 'falcon98-v16';
 const OFFLINE_URL = '/404.html';
 
 // Assets to cache
@@ -58,6 +58,11 @@ self.addEventListener('fetch', (event) => {
   // Skip cross-origin requests except for allowed CDN resources
   const url = new URL(event.request.url);
   if (url.origin !== location.origin && !isAllowedExternalHost(url.hostname)) {
+    return;
+  }
+
+  // Never route the intro video through the cache (large file, range requests, shown once)
+  if (url.origin === location.origin && url.pathname.startsWith('/assets/video/')) {
     return;
   }
 
