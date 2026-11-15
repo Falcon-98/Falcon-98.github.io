@@ -1355,10 +1355,13 @@ html.f98-intro,html.f98-intro body{overflow:hidden}
 (function(){
   var d=document.documentElement; if(!d.classList.contains('f98-intro'))return;
   try{localStorage.setItem('f98_intro_seen',String(Date.now()))}catch(e){}
-  var small=Math.max(screen.width,screen.height)<=1280||window.innerWidth<900;
-  var src='/assets/video/falcon98-intro-'+(small?'720':'1080')+'.mp4';
+  // Portrait screens (phones) get the 9:16 cut, landscape screens the 16:9 cut
+  var vw=window.innerWidth,vh=window.innerHeight,dpr=window.devicePixelRatio||1,portrait=vh>vw;
+  var sharp=(portrait?vw:vh)*dpr>=900;   // enough device pixels to benefit from 1080p
+  var src='/assets/video/falcon98-intro-'+(portrait?'v':'')+(sharp?'1080':'720')+'.mp4';
+  var poster='/assets/video/falcon98-intro-'+(portrait?'v-':'')+'poster.webp';
   var o=document.createElement('div');o.id='f98-intro';o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');o.setAttribute('aria-label','Falcon 98 intro video');
-  o.innerHTML='<video playsinline muted autoplay preload="auto" poster="/assets/video/falcon98-intro-poster.webp" aria-label="Falcon 98 brand video"><source src="'+src+'" type="video/mp4"></video>'+
+  o.innerHTML='<video playsinline muted autoplay preload="auto" poster="'+poster+'" aria-label="Falcon 98 brand video"><source src="'+src+'" type="video/mp4"></video>'+
     '<button type="button" class="fi-btn fi-skip" aria-label="Skip intro and go to the website">Skip intro &rsaquo;</button>'+
     '<button type="button" class="fi-btn fi-sound" aria-pressed="false">&#128264; Tap for sound</button>'+
     '<button type="button" class="fi-btn fi-play">&#9654; Play intro</button>'+
@@ -1366,9 +1369,12 @@ html.f98-intro,html.f98-intro body{overflow:hidden}
   document.body.insertBefore(o,document.body.firstChild);
   var v=o.querySelector('video'),bar=o.querySelector('.fi-bar i'),snd=o.querySelector('.fi-sound'),done=false,started=false;
   v.muted=true;
+  function fit(){var r=window.innerHeight/window.innerWidth,ar=portrait?r/(16/9):(1/r)/(16/9);  // screen shape vs video shape
+    v.style.objectFit=(ar>0.8&&ar<1.3)?'cover':'contain'}
+  fit();window.addEventListener('resize',fit);
   function close(){if(done)return;done=true;try{v.pause()}catch(e){}
     if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});
-    o.classList.add('out');d.classList.remove('f98-intro');document.removeEventListener('keydown',key);
+    o.classList.add('out');d.classList.remove('f98-intro');document.removeEventListener('keydown',key);window.removeEventListener('resize',fit);
     setTimeout(function(){o.remove()},650);var m=document.getElementById('main');if(m){m.setAttribute('tabindex','-1');m.focus({preventScroll:true})}}
   function key(e){if(e.key==='Escape')close()}
   function play(){var p=v.play();if(p&&p.catch)p.catch(function(){o.classList.add('blocked')})}
